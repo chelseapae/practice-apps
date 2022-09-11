@@ -17,24 +17,4 @@ let glossarySchema = mongoose.Schema({
   definition: String
 });
 
-let Glossery = mongoose.model('Glossery', glossarySchema);
-
-// let save = (words) => {
-//   // This function saves info to DB
-//   words.forEach((word) => {
-//     var newWord = new Word({
-//       id: word.id,
-//       word: word.word,
-//       definition: word.definition
-//     })
-//     newWord.save((err, data) => {
-//       if (err) {
-//         console.log('Error with saving data to DB');
-//       } else {
-//         console.log('Success with saving data to DB', data);
-//       }
-//     });
-//   })
-// }
-
-// module.exports.save = save;
+let Glossery = mongoose.model('Glossary', glossarySchema);
