@@ -1,5 +1,4 @@
 require("dotenv").config();
-
 const path = require("path");
 
 /*
@@ -12,4 +11,24 @@ const path = require("path");
   index.html and styles.css to dist folder upon build
 */
 
-module.exports = {};
+var SRC_DIR = path.join(__dirname, "/client/src");
+var DIST_DIR = path.join(__dirname, "/client/dist");
+
+module.exports = {
+  entry: `${SRC_DIR}/index.jsx`,
+  output: {
+    filename: "main.js",
+    path: DIST_DIR,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+    ],
+  },
+};
