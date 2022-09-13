@@ -8,11 +8,12 @@ app.use(express.urlencoded({ extended: false }))
 //this is a route that takes the word and definition, then saves it to the DB?
 app.post('/', function (req, res) {
   res.send('post is working')
+
 });
 
 
 //this is a route that sends back the existing words/definitions from the DB to the client?
-app.get('/å', function (req, res) {
+app.get('/', function (req, res) {
   res.send('get is working')
 });
 
