@@ -27,5 +27,10 @@ let save = (wordObj) => {
   return newWordObj.save()
 }
 
+let getList = () => {
+  return Glossary.find({})
+}
+
 module.exports.Glossary = Glossary;
 module.exports.save = save;
+module.exports.getList = getList;

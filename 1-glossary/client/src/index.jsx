@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Form from './components/Form.jsx';
-import Search from './components/Form.jsx';
-import WordsList from './components/Form.jsx';
+import Search from './components/Search.jsx';
+import List from './components/List.jsx';
+import $ from 'jquery';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -11,14 +12,27 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount(){
+    this.getWords();
+  }
 
-
+  getWords() {
+    $.ajax({
+      type: 'GET',
+      url: '/glossary'
+    })
+      .then(data => {
+        console.log('DATA FROM GET WORDS', data)
+        this.setState({wordsAndDefinitions: data})
+      })
+  }
 
   render () {
     return (
     <div>
       <h1>Glossary</h1>
       <Form />
+      <List wordsAndDefinitions={this.state.wordsAndDefinitions} />
     </div>
     )
   }

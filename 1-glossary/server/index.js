@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: false }))
 
 //this is a route that takes the word and definition, then saves it to the DB
 app.post('/glossary', function (req, res) {
-  console.log('REQ BODY', req.body)
+  console.log('POST REQ BODY', req.body)
 
   return db.save(req.body)
     .then((data)=> {
@@ -22,9 +22,18 @@ app.post('/glossary', function (req, res) {
     })
 });
 
-//this is a route that sends back the existing words/definitions from the DB to the client?
+//this is a route that sends back the existing words/definitions from the DB to the client
 app.get('/glossary', function (req, res) {
-  res.send('get is working')
+  console.log('REQ GET', req)
+  db.getList(req.body)
+  .then(data => {
+    console.log('DATA IN GET', data)
+    res.status(201, data)
+  })
+  .catch((err) => {
+    console.log(err)
+    res.status(404, 'get failed')
+  })
 });
 
 app.listen(process.env.PORT, function() {
