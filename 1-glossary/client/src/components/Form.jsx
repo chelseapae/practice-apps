@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 class Form extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class Form extends React.Component {
     }
     this.onChangeWord = this.onChangeWord.bind(this);
     this.onChangeDef = this.onChangeDef.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   onChangeWord(e){
@@ -25,6 +27,22 @@ class Form extends React.Component {
     })
   }
 
+  submit(){
+    event.preventDefault()
+    console.log('submitted!', this.state.word, this.state.definition)
+      $.ajax({
+        type: "POST",
+        url: "/glossary",
+        data: JSON.stringify({word: this.state.word, definition: this.state.definition}),
+        contentType: 'application/json',
+        success: (response) => {console.log('ajax success', response)},
+        error: (err)=>{console.log('ajax error', err)}
+      })
+      .then((data) => {
+        console.log('SUBMIT THEN', data)
+      })
+  }
+
   render() {
     return(
         <div>
@@ -36,9 +54,9 @@ class Form extends React.Component {
             </label><br/><br/>
             <label>
               Definition:<br/>
-              <input type="text" name="definition" placeholder="Insert your defintiion"  value={this.state.definition} onChange={this.onChangeDef}/>
+              <input type="text" name="definition" placeholder="Insert your definition"  value={this.state.definition} onChange={this.onChangeDef}/>
             </label><br/><br/>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" onClick={this.submit}/>
           </form>
         </div>
     )

@@ -16,8 +16,16 @@ let glossarySchema = mongoose.Schema({
 
 let Glossary = mongoose.model('Glossary', glossarySchema);
 
-// let save = (words) => {
-//   //this should save the word and definition to the DB
-// }
+let save = (wordObj) => {
+  //this should save the word and definition to the DB
+  console.log('db', wordObj)
+  var newWordObj = new Glossary({
+    word: wordObj.word,
+    definition: wordObj.definition
+  })
+
+  return newWordObj.save()
+}
 
 module.exports.Glossary = Glossary;
+module.exports.save = save;
