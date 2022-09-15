@@ -32,7 +32,8 @@ class App extends React.Component {
     return (
     <div>
       <h1>Glossary</h1>
-      <Form wordsAndDef={this.state.wordsAndDefinitions}/>
+      <Form wordsAndDef={this.state.wordsAndDefinitions}/> <br/>
+      {/* <Search wordsAndDef={this.state.wordsAndDefinitions}/> */}
       <List wordsAndDefinitions={this.state.wordsAndDefinitions} />
     </div>
     )

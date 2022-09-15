@@ -31,6 +31,11 @@ let getList = () => {
   return Glossary.find({})
 }
 
+let deleteWord = (inputtedWord) => {
+  Glossary.deleteOne({word: inputtedWord})
+}
+
 module.exports.Glossary = Glossary;
 module.exports.save = save;
 module.exports.getList = getList;
+module.exports.deleteWord = deleteWord;
