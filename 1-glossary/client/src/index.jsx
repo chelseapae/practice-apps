@@ -10,6 +10,7 @@ class App extends React.Component {
     this.state = {
       wordsAndDefinitions: []
     }
+    this.getWords = this.getWords.bind(this);
   }
 
   componentDidMount(){
@@ -31,7 +32,7 @@ class App extends React.Component {
     return (
     <div>
       <h1>Glossary</h1>
-      <Form />
+      <Form wordsAndDef={this.state.wordsAndDefinitions}/>
       <List wordsAndDefinitions={this.state.wordsAndDefinitions} />
     </div>
     )

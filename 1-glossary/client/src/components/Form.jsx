@@ -41,6 +41,16 @@ class Form extends React.Component {
       .then((data) => {
         console.log('SUBMIT THEN', data)
       })
+
+        $.ajax({
+          type: 'GET',
+          url: '/glossary'
+        })
+          .then(data => {
+            console.log('DATA FROM GET WORDS', data)
+            this.setState({wordsAndDefinitions: data})
+          })
+
   }
 
   render() {

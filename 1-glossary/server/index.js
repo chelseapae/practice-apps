@@ -24,15 +24,14 @@ app.post('/glossary', function (req, res) {
 
 //this is a route that sends back the existing words/definitions from the DB to the client
 app.get('/glossary', function (req, res) {
-  console.log('REQ GET', req)
-  db.getList(req.body)
+  return db.getList()
   .then(data => {
     console.log('DATA IN GET', data)
-    res.status(201, data)
+    res.status(201).send(data)
   })
   .catch((err) => {
     console.log(err)
-    res.status(404, 'get failed')
+    res.send('get failed')
   })
 });
 
