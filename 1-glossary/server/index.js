@@ -45,7 +45,21 @@ app.delete('/glossary', function (req, res) {
     })
     .catch((err => {
       console.log(err)
+      res.send('delete failed')
     }))
+});
+
+//this is a route that edits the selected word from the DB
+app.put('/glossary', function (req, res) {
+  db.editWord(req.body)
+  .then((data) => {
+    res.status(204).send(data);
+
+  })
+  .catch((err => {
+    console.log(err)
+    res.send('put failed')
+  }))
 });
 
 app.listen(process.env.PORT, function() {

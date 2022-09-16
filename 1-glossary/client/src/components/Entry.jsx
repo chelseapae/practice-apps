@@ -2,7 +2,7 @@ import React from 'react';
 
 const Entry = (props) => {
   return (
-    <li key={props.entry.definition}>
+    <li>
     <b>Word:</b> {props.entry.word} <br/>
     <b>Definition:</b> {props.entry.definition}<br/>
      <button type="edit"> Edit </button>

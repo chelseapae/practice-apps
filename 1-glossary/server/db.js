@@ -35,7 +35,15 @@ let deleteWord = (inputtedWord) => {
   return Glossary.deleteOne({word: inputtedWord})
 }
 
+let editWord = (entry) => {
+  return Glossary.updateOne(
+    {word: entry.word},
+    {word: entry.word, definition: entry.definition}
+  )
+}
+
 module.exports.Glossary = Glossary;
 module.exports.save = save;
 module.exports.getList = getList;
 module.exports.deleteWord = deleteWord;
+module.exports.editWord = editWord;

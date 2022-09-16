@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
 import axios from 'axios';
 
 class Form extends React.Component {
@@ -27,22 +26,6 @@ class Form extends React.Component {
       definition: e.target.value
     })
   }
-
-  // submit(){
-  //   event.preventDefault()
-  //   console.log('submitted!', this.state.word, this.state.definition)
-  //     $.ajax({
-  //       type: "POST",
-  //       url: "/glossary",
-  //       data: JSON.stringify({word: this.state.word, definition: this.state.definition}),
-  //       contentType: 'application/json',
-  //       success: () => {this.getWords()},
-  //       error: (err)=>{console.log('ajax error', err)}
-  //     })
-  //     .then((data) => {
-  //       console.log('SUBMIT THEN', data)
-  //     })
-  // }
 
   submit(){
     event.preventDefault()
