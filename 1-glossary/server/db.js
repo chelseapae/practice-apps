@@ -1,6 +1,7 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const { ModuleFilenameHelpers } = require("webpack");
+const { v4: uuidv4 } = require('uuid');
 
 mongoose.connect(`mongodb://localhost/${process.env.DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -10,6 +11,7 @@ mongoose.connect(`mongodb://localhost/${process.env.DB_NAME}`, { useNewUrlParser
 // 4. Import the models into any modules that need them
 
 let glossarySchema = mongoose.Schema({
+  id: Number,
   word: String,
   definition: String
 });
@@ -20,6 +22,7 @@ let save = (wordObj) => {
   //this should save the word and definition to the DB
   console.log('db', wordObj)
   var newWordObj = new Glossary({
+    id: wordObj.id,
     word: wordObj.word,
     definition: wordObj.definition
   })
@@ -37,7 +40,7 @@ let deleteWord = (inputtedWord) => {
 
 let editWord = (entry) => {
   return Glossary.updateOne(
-    {word: entry.word},
+    {id: entry.id},
     {word: entry.word, definition: entry.definition}
   )
 }

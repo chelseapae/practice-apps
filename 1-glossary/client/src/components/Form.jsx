@@ -48,7 +48,7 @@ class Form extends React.Component {
             </label><br/><br/>
             <label>
               Definition:<br/>
-              <input type="text" name="definition" placeholder="Insert your definition"  value={this.state.definition} onChange={this.onChangeDef}/>
+              <input type="text" name="definition" placeholder="Insert your definition" value={this.state.definition} onChange={this.onChangeDef}/>
             </label><br/><br/>
           <input type="submit" value="Submit" onClick={this.submit}/>
           </form>

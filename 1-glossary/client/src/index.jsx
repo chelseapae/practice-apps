@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Form from './components/Form.jsx';
 import List from './components/List.jsx';
+import Entry from './components/Entry.jsx';
 import axios from 'axios';
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +18,6 @@ class App extends React.Component {
   componentDidMount(){
     this.getWords();
   }
-
 
   getWords(){
     axios.get('/glossary')
@@ -38,9 +38,9 @@ class App extends React.Component {
     axios.put(
       '/glossary',
       {data: {word: word}}
+      )
       .then(this.getWords())
       .catch((err)=> console.log('axios error', err))
-    )
   }
 
   render () {
