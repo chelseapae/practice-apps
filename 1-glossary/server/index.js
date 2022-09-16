@@ -37,14 +37,15 @@ app.get('/glossary', function (req, res) {
 
 //this is a route that deletes the selected word from the DB
 app.delete('/glossary', function (req, res) {
-  db.deleteWord(req.body)
+  console.log('DELETE REQ', req.body.word)
+  return db.deleteWord(req.body.word)
     .then((data) => {
       res.status(204).send(data);
+
     })
     .catch((err => {
       console.log(err)
     }))
-
 });
 
 app.listen(process.env.PORT, function() {

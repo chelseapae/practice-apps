@@ -1,54 +1,50 @@
 import React from 'react';
 import $ from 'jquery';
-class List extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      wordsAndDefinitions: []
-    }
-    this.getWords = this.getWords.bind(this);
-    this.delete = this.delete.bind(this);
-  }
+import Entry from './Entry.jsx'
 
-  componentDidMount(){
-    this.getWords();
-  }
-
-  getWords() {
-    $.ajax({
-      type: 'GET',
-      url: '/glossary'
-    })
-      .then(data => {
-        console.log('DATA FROM GET WORDS', data)
-        this.setState({wordsAndDefinitions: data})
-      })
-  }
-
-  delete(){
-    $.ajax({
-      type: 'DELETE',
-      url: '/glossary'
-    })
-  }
-
-  render () {
+const List = (props) => {
+  console.log('PROPS IN LIST', props.wordsAndDefinitions)
     return (
     <div>
-      {/* {console.log('PROPS IN LIST', props)} */}
       <hr/>
       <h2> Words and Definitions </h2>
-        {this.props.wordsAndDefinitions.map((wordAndDef) =>
-          <li key={wordAndDef.definition}>
-            <b>Word:</b> {wordAndDef.word} <br/>
-            <b>Definition:</b> {wordAndDef.definition}<br/>
-             <button type="edit"> Edit </button>
-             <button type="delete" onClick={this.}> Delete </button>
-            <br/><br/>
-          </li>
+        {props.wordsAndDefinitions.map((wordAndDef) =>
+          <Entry entry={wordAndDef} delete={props.delete} />
         )}
     </div>
     )
   }
-}
 export default List;
+
+
+  // componentDidMount(){
+  //   this.getWords();
+  // }
+
+  // getWords() {
+  //   $.ajax({
+  //     type: 'GET',
+  //     url: '/glossary',
+  //     success: (data) => this.setState({wordsAndDefinitions: data})
+  //   })
+  //     // .done(data => {
+  //     //   console.log('DATA FROM GET WORDS', data)
+  //     //   this.setState({wordsAndDefinitions: data})
+  //     // })
+  // }
+  // getWords(){
+  //   axios.get('/glossary')
+  //   .then((data) => this.setState({wordsAndDefinitions: data}))
+  //   .catch((err)=> console.log('axios error', err))
+  // }
+
+
+  // delete(word){
+  //   $.ajax({
+  //     type: 'DELETE',
+  //     url: '/glossary',
+  //     data: {word: word},
+  //     success: () => {return this.getWords()},
+  //     error: (err)=>{console.log('ajax error', err)}
+  //   })
+  // }

@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import axios from 'axios';
 
 class Form extends React.Component {
   constructor(props) {
@@ -27,20 +28,30 @@ class Form extends React.Component {
     })
   }
 
+  // submit(){
+  //   event.preventDefault()
+  //   console.log('submitted!', this.state.word, this.state.definition)
+  //     $.ajax({
+  //       type: "POST",
+  //       url: "/glossary",
+  //       data: JSON.stringify({word: this.state.word, definition: this.state.definition}),
+  //       contentType: 'application/json',
+  //       success: () => {this.getWords()},
+  //       error: (err)=>{console.log('ajax error', err)}
+  //     })
+  //     .then((data) => {
+  //       console.log('SUBMIT THEN', data)
+  //     })
+  // }
+
   submit(){
     event.preventDefault()
-    console.log('submitted!', this.state.word, this.state.definition)
-      $.ajax({
-        type: "POST",
-        url: "/glossary",
-        data: JSON.stringify({word: this.state.word, definition: this.state.definition}),
-        contentType: 'application/json',
-        success: (response) => {console.log('ajax success', response)},
-        error: (err)=>{console.log('ajax error', err)}
-      })
-      .then((data) => {
-        console.log('SUBMIT THEN', data)
-      })
+    axios.post(
+      '/glossary',
+      {word: this.state.word, definition: this.state.definition}
+      )
+      .then(this.props.getWords())
+      .catch((err)=> console.log('axios submit error', err))
   }
 
   render() {

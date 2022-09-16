@@ -32,7 +32,7 @@ let getList = () => {
 }
 
 let deleteWord = (inputtedWord) => {
-  Glossary.deleteOne({word: inputtedWord})
+  return Glossary.deleteOne({word: inputtedWord})
 }
 
 module.exports.Glossary = Glossary;
