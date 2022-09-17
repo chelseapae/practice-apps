@@ -4,8 +4,8 @@ class Entry extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      word: this.props.entry.word,
-      definition: this.props.entry.definition,
+      word: this.props.wordAndDef.word,
+      definition: this.props.wordAndDef.definition,
       edited: false
     }
     this.edit = this.edit.bind(this);
@@ -31,7 +31,7 @@ class Entry extends React.Component {
   }
 
   submitEdit() {
-    this.props.editWord(this.state.word);
+    this.props.editWordObj( {'_id': this.props.wordAndDef._id, 'definition': this.state.definition} );
     this.setState({edited: false})
   }
 
@@ -43,7 +43,7 @@ class Entry extends React.Component {
           <b>Word:</b> {this.state.word} <br/>
           <b>Definition:</b> {this.state.definition} <br/>
           <button type="edit" onClick={this.edit}> Edit </button><br/>
-          <button type="delete" onClick={() => this.props.delete(this.props.entry.word)}> Delete </button>
+          <button type="delete" onClick={() => this.props.delete(this.props.wordAndDef.word)}> Delete </button>
           <br/><br/>
         </li>
       )
