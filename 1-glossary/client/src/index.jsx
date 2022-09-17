@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Form from './components/Form.jsx';
 import List from './components/List.jsx';
+import Search from './components/Search.jsx'
 import axios from 'axios';
-// import Search from './components/Search.jsx'
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +13,7 @@ class App extends React.Component {
     this.getWords = this.getWords.bind(this);
     this.delete = this.delete.bind(this);
     this.editWordObj = this.editWordObj.bind(this);
-    // this.search = this.search.bind(this);
+    this.search = this.search.bind(this);
   }
 
   componentDidMount(){
@@ -44,23 +44,23 @@ class App extends React.Component {
       .catch((err)=> console.log('editWord axios error', err))
   }
 
-  // search(word) {
-  //   axios.post('/glossary',
-  //     {data: {word: word}})
-  //     .then((response) => {
-  //       this.setState({wordsAndDefinitions: response.data});
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }
+  search(word) {
+    axios.post('/glossary',
+      {data: {word: word}})
+      .then((response) => {
+        this.setState({wordsAndDefinitions: response.data});
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   render () {
     return (
     <div>
       <h1>Glossary</h1>
       <Form wordsAndDef={this.state.wordsAndDefinitions} getWords={this.getWords}/> <br/>
-      {/* <Search search={this.search.bind(this)}/> */}
+      <Search wordsAndDefinitions={this.state.wordsAndDefinitions}/>
       <List
         wordsAndDefinitions={this.state.wordsAndDefinitions}
         getWords={this.getWords}

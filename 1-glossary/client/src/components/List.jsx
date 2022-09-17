@@ -2,7 +2,7 @@ import React from 'react';
 import Entry from './Entry.jsx'
 
 const List = (props) => {
-  console.log('PROPS IN LIST', props)
+  // console.log('PROPS IN LIST', props)
     return (
     <div>
       <hr/>

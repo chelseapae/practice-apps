@@ -1,4 +1,20 @@
-// import React from 'react';
+import React from 'react';
+
+const Search = (props) => {
+  return (
+    <div>
+      <input type="text" placeholder="Search..." className="serach"/>
+      <ul>
+        {props.wordsAndDefinitions.map((item) => {
+          <li>{item.word}: {item.defintiion} </li>
+        })}
+      </ul>
+    </div>
+  )
+}
+
+export default Search
+
 
 // class Search extends React.Component {
 //   constructor(props) {
@@ -33,5 +49,3 @@
 //     )
 //   }
 // }
-
-// export default Search
