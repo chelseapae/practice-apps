@@ -11,7 +11,6 @@ mongoose.connect(`mongodb://localhost/${process.env.DB_NAME}`, { useNewUrlParser
 // 4. Import the models into any modules that need them
 
 let glossarySchema = mongoose.Schema({
-  id: Number,
   word: String,
   definition: String
 });
@@ -22,7 +21,6 @@ let save = (wordObj) => {
   //this should save the word and definition to the DB
   console.log('db', wordObj)
   var newWordObj = new Glossary({
-    id: wordObj.id,
     word: wordObj.word,
     definition: wordObj.definition
   })
@@ -40,7 +38,7 @@ let deleteWord = (inputtedWord) => {
 
 let editWord = (entry) => {
   return Glossary.updateOne(
-    {id: entry.id},
+    {_id: entry._id},
     {word: entry.word, definition: entry.definition}
   )
 }

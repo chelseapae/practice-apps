@@ -51,8 +51,8 @@ app.delete('/glossary', function (req, res) {
 
 //this is a route that edits the selected word from the DB
 app.put('/glossary', function (req, res) {
-  console.log('REQ PUT', req.body.data)
-  db.editWord(req.body.data)
+  console.log('REQ PUT', req.body.word)
+  db.editWord(req.body.word)
   .then((data) => {
     res.status(204).send(data);
 

@@ -15,9 +15,7 @@ class Entry extends React.Component {
   }
 
   edit() {
-    this.setState({
-      edited: true
-    })
+    this.setState({edited: true})
   }
 
   editWord(e) {
@@ -33,7 +31,7 @@ class Entry extends React.Component {
   }
 
   submitEdit() {
-    this.props.edit(this.state.word);
+    this.props.editWord(this.state.word);
     this.setState({edited: false})
   }
 
@@ -55,7 +53,7 @@ class Entry extends React.Component {
           <b>Word:</b> {this.state.word} <br/>
           <b>Definition:</b> {this.state.definition} <br/>
           <input type="text" onChange={this.editWord} value={this.state.word}/><br/>
-          <input type="text" onChange={this.editDef} value={this.state.definition}/><br/>
+          <input type="text" onChange={this.editDef} value={this.state.definition}/>
           <button onClick={this.submitEdit}> Edit </button>
           <br/><br/>
       </li>

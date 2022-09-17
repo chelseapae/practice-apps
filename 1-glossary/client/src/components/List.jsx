@@ -11,7 +11,7 @@ const List = (props) => {
            key={props.definition}
            entry={wordAndDef}
            delete={props.delete}
-           edit={props.edit}
+           editWord={props.editWord}
            />
         )}
     </div>
