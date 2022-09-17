@@ -1,12 +1,21 @@
 import React from 'react';
+import {useState} from 'react';
 
 const Search = (props) => {
+  const [searchTerm, setSearchTerm] = useState('')
   return (
     <div>
-      <input type="text" placeholder="Search..." className="serach"/>
+      <hr/>
+      <input type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}}/>
       <ul>
-        {props.wordsAndDefinitions.map((item) => {
-          <li>{item.word}: {item.defintiion} </li>
+        {props.wordsAndDefinitions.filter((val) => {
+          if (searchTerm == '') {
+            return val
+          } else if (val.word.toLowerCase().includes(searchTerm.toLowerCase())) {
+            return val
+          }
+        }).map((item) => {
+          return <li key={item.definition}> {item.word}: {item.definition}</li>
         })}
       </ul>
     </div>
@@ -15,6 +24,12 @@ const Search = (props) => {
 
 export default Search
 
+
+{/* <ul>
+{props.wordsAndDefinitions.map((item) => {
+  return <li key={item.definition}> {item.word}: {item.definition}</li>
+})}
+</ul> */}
 
 // class Search extends React.Component {
 //   constructor(props) {
