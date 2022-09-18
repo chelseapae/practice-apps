@@ -19,13 +19,15 @@ app.use(logger);
 // Serves up all static and generated assets in ../client/dist.
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
-/**** 
- * 
- * 
- * Other routes here....
- *
- * 
- */
+//send information from the client and save to the DB
+app.post('/homepage', (req, res) => {
+  res.send(console.log('post is working'))
+})
+
+//retrieve just the current session's information to render on client
+app.get('/homepage', (req, res) => {
+  res.send(console.log('get is working'))
+})
 
 app.listen(process.env.PORT);
 console.log(`Listening at http://localhost:${process.env.PORT}`);

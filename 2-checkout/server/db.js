@@ -1,3 +1,4 @@
+require("dotenv").config();
 const mysql = require("mysql2");
 const Promise = require("bluebird");
 
@@ -15,8 +16,24 @@ db.connectAsync()
   .then(() => console.log(`Connected to MySQL as id: ${db.threadId}`))
   .then(() =>
     // Expand this table definition as needed:
+    // define schema here
     db.queryAsync(
-      "CREATE TABLE IF NOT EXISTS responses (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY)"
+      `CREATE TABLE IF NOT EXISTS responses (
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(50) NOT NULL,
+        email VARCHAR(100) NOT NULL,
+        password VARCHAR(50) NOT NULL,
+        address1 VARCHAR(100) NOT NULL,
+        address2 VARCHAR(50) NOT NULL,
+        city VARCHAR(50) NOT NULL,
+        state VARCHAR(30) NOT NULL,
+        zipcode VARCHAR(10) NOT NULL,
+        phone VARCHAR(15) NOT NULL,
+        cc VARCHAR(20) NOT NULL,
+        expiration VARCHAR(10) NOT NULL,
+        cvv VARCHAR(3) NOT NULL,
+        billingZip VARCHAR(10) NOT NULL
+        )`
     )
   )
   .catch((err) => console.log(err));
