@@ -59,6 +59,14 @@ class App extends React.Component {
     })
   }
 
+  // F2
+  // handleSubmitF2(){
+  //   event.preventDefault
+  //   this.setState({
+  //     page: 'F3'
+  //   })
+  // }
+
   render () {
     if (this.state.page === 'Homepage') {
       return (
@@ -81,6 +89,21 @@ class App extends React.Component {
           password={this.state.password}
           onChange={this.onChange}
           handleSubmitF1={this.handleSubmitF1}
+          />
+        </div>
+      )
+    } else if (this.state.page === 'F2') {
+      return (
+        <div>
+          <F2
+          address1={this.state.address1}
+          address2={this.state.address2}
+          city={this.state.city}
+          state={this.state.state}
+          zipcode={this.state.zipcode}
+          phone={this.state.phone}
+          onChange={this.onChange}
+          handleSubmitF2={this.handleSubmitF2}
           />
         </div>
       )
