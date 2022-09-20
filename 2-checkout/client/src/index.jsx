@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import { render } from "react-dom";
 import F1 from './components/F1.jsx';
+import F2 from './components/F2.jsx';
+import F3 from './components/F3.jsx';
+import Confirmation from './components/Confirmation.jsx';
 
 class App extends React.Component {
   constructor(props){
@@ -31,6 +34,10 @@ class App extends React.Component {
     this.handleCheckout = this.handleCheckout.bind(this);
 
     this.handleSubmitF1 = this.handleSubmitF1.bind(this);
+
+    this.handleSubmitF2 = this.handleSubmitF2.bind(this);
+
+    this.handleSubmitF3 = this.handleSubmitF3.bind(this);
   }
 
   // General use
@@ -53,19 +60,30 @@ class App extends React.Component {
 
   // F1
   handleSubmitF1(){
-    event.preventDefault
+    console.log('F1 clicked!')
     this.setState({
       page: 'F2'
     })
+    event.preventDefault()
   }
 
   // F2
-  // handleSubmitF2(){
-  //   event.preventDefault
-  //   this.setState({
-  //     page: 'F3'
-  //   })
-  // }
+  handleSubmitF2(){
+    console.log('F2 clicked!')
+    this.setState({
+      page: 'F3'
+    })
+    event.preventDefault()
+  }
+
+  // F3
+  handleSubmitF3(){
+    console.log('F3 clicked!')
+    this.setState({
+      page: 'Confirmation'
+    })
+    event.preventDefault()
+  }
 
   render () {
     if (this.state.page === 'Homepage') {
@@ -105,6 +123,46 @@ class App extends React.Component {
           onChange={this.onChange}
           handleSubmitF2={this.handleSubmitF2}
           />
+        </div>
+      )
+    } else if (this.state.page === 'F3') {
+      return (
+        <div>
+          <F3
+          cc={this.state.cc}
+          expiration={this.state.expiration}
+          cvv={this.state.cvv}
+          billingZip={this.state.billingZip}
+          onChange={this.onChange}
+          handleSubmitF3={this.handleSubmitF3}
+          />
+        </div>
+      )
+    } else if (this.state.page === 'Confirmation') {
+      return (
+        <div>
+          <Confirmation
+          name={this.state.name}
+          email={this.state.email}
+          password={this.state.password}
+          address1={this.state.address1}
+          address2={this.state.address2}
+          city={this.state.city}
+          state={this.state.state}
+          zipcode={this.state.zipcode}
+          phone={this.state.phone}
+          cc={this.state.cc}
+          expiration={this.state.expiration}
+          cvv={this.state.cvv}
+          billingZip={this.state.billingZip}
+          handleSubmitF3={this.handleSubmitF3}
+          />
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <h1>Error: You shouldn't be here!</h1>
         </div>
       )
     }
