@@ -14,6 +14,8 @@ const db = Promise.promisifyAll(connection, { multiArgs: true });
 
 db.connectAsync()
   .then(() => console.log(`Connected to MySQL as id: ${db.threadId}`))
+  .then(() => db.queryAsync(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`))
+  .then(() => db.queryAsync(`USE ${process.env.DB_NAME}`))
   .then(() =>
     // Expand this table definition as needed:
     // define schema here

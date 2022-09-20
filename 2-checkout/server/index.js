@@ -21,7 +21,30 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
 //send information from the client and save to the DB
 app.post('/homepage', (req, res) => {
-  res.send(console.log('post is working'))
+  var queryString = `INSERT INTO responses (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name,
+    email,
+    password,
+    address1,
+    address2,
+    city,
+    state,
+    zipcode,
+    phone,
+    cc,
+    expiration,
+    cvv,
+    billingZip
+    )
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+  db.query(queryString, (err, data) => {
+    if (err) {
+      console.log('post query error')
+    } else {
+      res.status(201).send("Purcha$e $uce$$ful!")
+    }
+  })
 })
 
 //retrieve just the current session's information to render on client
