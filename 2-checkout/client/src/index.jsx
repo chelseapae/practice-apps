@@ -32,12 +32,10 @@ class App extends React.Component {
     this.onChange = this.onChange.bind(this);
 
     this.handleCheckout = this.handleCheckout.bind(this);
-
     this.handleSubmitF1 = this.handleSubmitF1.bind(this);
-
     this.handleSubmitF2 = this.handleSubmitF2.bind(this);
-
     this.handleSubmitF3 = this.handleSubmitF3.bind(this);
+    this.handleSubmitConfirmation = this.handleSubmitConfirmation.bind(this);
   }
 
   // General use
@@ -60,29 +58,38 @@ class App extends React.Component {
 
   // F1
   handleSubmitF1(){
+    event.preventDefault()
     console.log('F1 clicked!')
     this.setState({
       page: 'F2'
     })
-    event.preventDefault()
   }
 
   // F2
   handleSubmitF2(){
+    event.preventDefault()
     console.log('F2 clicked!')
     this.setState({
       page: 'F3'
     })
-    event.preventDefault()
   }
 
   // F3
   handleSubmitF3(){
+    event.preventDefault()
     console.log('F3 clicked!')
     this.setState({
       page: 'Confirmation'
     })
+  }
+
+  // Confirmation
+  handleSubmitConfirmation(){
     event.preventDefault()
+    console.log('Confirmation Page clicked! Return to Homepage')
+    this.setState({
+      page: 'Homepage'
+    })
   }
 
   render () {
@@ -155,7 +162,7 @@ class App extends React.Component {
           expiration={this.state.expiration}
           cvv={this.state.cvv}
           billingZip={this.state.billingZip}
-          handleSubmitF3={this.handleSubmitF3}
+          handleSubmitConfirmation={this.handleSubmitConfirmation}
           />
         </div>
       )
