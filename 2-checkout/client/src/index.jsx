@@ -5,6 +5,7 @@ import F1 from './components/F1.jsx';
 import F2 from './components/F2.jsx';
 import F3 from './components/F3.jsx';
 import Confirmation from './components/Confirmation.jsx';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props){
@@ -35,7 +36,8 @@ class App extends React.Component {
     this.handleSubmitF1 = this.handleSubmitF1.bind(this);
     this.handleSubmitF2 = this.handleSubmitF2.bind(this);
     this.handleSubmitF3 = this.handleSubmitF3.bind(this);
-    this.handleSubmitConfirmation = this.handleSubmitConfirmation.bind(this);
+
+    this.saveToDB = this.saveToDB.bind(this);
   }
 
   // General use
@@ -84,11 +86,36 @@ class App extends React.Component {
   }
 
   // Confirmation
-  handleSubmitConfirmation(){
+  saveToDB(event){
     event.preventDefault()
-    console.log('Confirmation Page clicked! Return to Homepage')
-    this.setState({
-      page: 'Homepage'
+    var checkoutObj = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+
+      address1: this.state.address1,
+      address2: this.state.address2,
+      city: this.state.city,
+      state: this.state.state,
+      zipcode: this.state.zipcode,
+      phone: this.state.phone,
+
+      cc: this.state.cc,
+      expiration: this.state.expiration,
+      cvv: this.state.cvv,
+      billingZip: this.state.billingZip
+    }
+    console.log('FRONT END INDEX.JSX checkoutObj***********', checkoutObj)
+    axios.post('/Confirmation', checkoutObj)
+    .then((result) => {
+      console.log('Purchased!', result)
+      this.setState({
+        page: 'Homepage'
+      })
+    })
+    .catch((err) => {
+      console.log('Error making purchase', err)
+
     })
   }
 
@@ -162,7 +189,7 @@ class App extends React.Component {
           expiration={this.state.expiration}
           cvv={this.state.cvv}
           billingZip={this.state.billingZip}
-          handleSubmitConfirmation={this.handleSubmitConfirmation}
+          saveToDB={this.saveToDB}
           />
         </div>
       )

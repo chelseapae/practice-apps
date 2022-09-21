@@ -19,7 +19,7 @@ const Confirmation = (props) => {
       <b>CVV:</b> {props.cvv} <br/>
       <b>Billing Zip Code:</b> {props.billingZip} <br/><br/>
 
-      <button type="submit" onClick={props.handleSubmitConfirmation}> Purchase </button>
+      <button type="submit" onClick={props.saveToDB}> Purchase </button>
     </div>
   )
 }

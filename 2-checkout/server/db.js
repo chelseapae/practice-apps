@@ -33,7 +33,7 @@ db.connectAsync()
         phone VARCHAR(15) NOT NULL,
         cc VARCHAR(20) NOT NULL,
         expiration VARCHAR(10) NOT NULL,
-        cvv VARCHAR(3) NOT NULL,
+        cvv VARCHAR(30) NOT NULL,
         billingZip VARCHAR(10) NOT NULL
         )`
     )
