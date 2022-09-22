@@ -22,19 +22,19 @@ db.connectAsync()
     db.queryAsync(
       `CREATE TABLE IF NOT EXISTS responses (
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(50) NOT NULL,
+        name VARCHAR(100) NOT NULL,
         email VARCHAR(100) NOT NULL,
         password VARCHAR(50) NOT NULL,
         address1 VARCHAR(100) NOT NULL,
-        address2 VARCHAR(50) NOT NULL,
-        city VARCHAR(50) NOT NULL,
-        state VARCHAR(30) NOT NULL,
-        zipcode VARCHAR(10) NOT NULL,
-        phone VARCHAR(15) NOT NULL,
-        cc VARCHAR(20) NOT NULL,
-        expiration VARCHAR(10) NOT NULL,
-        cvv VARCHAR(30) NOT NULL,
-        billingZip VARCHAR(10) NOT NULL
+        address2 VARCHAR(100) NOT NULL,
+        city VARCHAR(100) NOT NULL,
+        state VARCHAR(100) NOT NULL,
+        zipcode VARCHAR(100) NOT NULL,
+        phone VARCHAR(100) NOT NULL,
+        cc VARCHAR(100) NOT NULL,
+        expiration VARCHAR(100) NOT NULL,
+        cvv VARCHAR(100) NOT NULL,
+        billingZip VARCHAR(100) NOT NULL
         )`
     )
   )

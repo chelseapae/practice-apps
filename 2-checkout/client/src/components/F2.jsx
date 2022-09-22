@@ -8,25 +8,25 @@ const F2 = (props) => {
       <form onSubmit={props.handleSubmitF2}>
         <label>
           Address Line 1: <br/>
-          <input type="text" name="address1" onChange={props.onChange}/>
+          <input type="text" name="address1" required onChange={props.onChange}/>
         </label>
         <br/><br/>
 
         <label>
           Address Line 2: <br/>
-          <input type="text" name="address2" onChange={props.onChange}/>
+          <input type="text" name="address2" required onChange={props.onChange}/>
         </label>
         <br/><br/>
 
         <label>
           City: <br/>
-          <input type="text" name="city" onChange={props.onChange}/>
+          <input type="text" name="city" required onChange={props.onChange}/>
         </label>
         <br/><br/>
 
         <label>
           State: <br/>
-          <input type="text" name="state" onChange={props.onChange}/>
+          <input type="text" name="state" required onChange={props.onChange}/>
         </label>
         <br/><br/>
 

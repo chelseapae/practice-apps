@@ -8,25 +8,25 @@ const F3 = (props) => {
       <form onSubmit={props.handleSubmitF3}>
         <label>
           Credit Card Number: <br/>
-          <input type="text" name="cc" onChange={props.onChange}/>
+          <input type="text" name="cc" required onChange={props.onChange}/>
         </label>
         <br/><br/>
 
         <label>
           Expiration Date: <br/>
-          <input type="text" name="expiration" onChange={props.onChange}/>
+          <input type="text" name="expiration" required onChange={props.onChange}/>
         </label>
         <br/><br/>
 
         <label>
           CVV: <br/>
-          <input type="text" name="cvv" onChange={props.onChange}/>
+          <input type="text" name="cvv" required onChange={props.onChange}/>
         </label>
         <br/><br/>
 
         <label>
           Billing Zip Code: <br/>
-          <input type="text" name="billingZip" onChange={props.onChange}/>
+          <input type="text" name="billingZip" required onChange={props.onChange}/>
         </label>
         <br/><br/>
 
